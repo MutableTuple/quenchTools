@@ -106,7 +106,7 @@ const App = () => {
     <div className="flex min-h-screen ">
       {/* Toggle Button for Sidebar (top position on smaller screens) */}
       <button
-        className="md:hidden fixed top-4 right-4 z-10 bg-blue-900 text-white p-2 rounded"
+        className="md:hidden fixed top-4 right-4 z-10 bg-blue-500 text-white p-2 rounded"
         onClick={toggleSidebar}
       >
         {sidebarOpen ? "hide tools" : "show tools"}
@@ -246,11 +246,13 @@ const App = () => {
       <main className="w-full md:ml-auto p-6 md:w-3/4 md:p-10 lg:w-5/6 h-dvh overflow-scroll ">
         {selectedTool === "Welcome" && (
           <div>
-            <h1 className="text-3xl font-bold mb-4 text-center md:text-start">
+            <h1 className="text-xl md:text-3xl font-bold mb-4 text-center md:text-start">
               QuenchTools &rarr; No Ads, No Redirects, Quick Conversion &
               Downloads.
             </h1>
-            <p>Select a tool from the sidebar to get started.</p>
+            <p className="text-center md:text-start">
+              Select a tool from the sidebar to get started.
+            </p>
             <br />
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
               <FeaturesCard
