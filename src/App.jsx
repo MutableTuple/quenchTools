@@ -1,14 +1,20 @@
 import React, { useState } from "react";
 import Tesseract from "tesseract.js";
 import imageCompression from "browser-image-compression";
+import { FaLinkedin } from "react-icons/fa6";
+import { FaSquareXTwitter } from "react-icons/fa6";
+
 import ImageCompression from "./ImageCompression"; // Import ImageCompression component
+import FeaturesCard from "./FeaturesCard";
+import { FaExternalLinkAlt } from "react-icons/fa";
+
 import ImageUpscaling from "./ImageUpscaling"; // Import ImageUpscaling component
 import PDFCompression from "./PDFCompression";
 import ImageOperations from "./ImageOperations";
 import ImageConverter from "./ImageConverter";
 import FileConverter from "./FileConverter";
 import { IoReloadCircle } from "react-icons/io5";
-
+import { TbTools } from "react-icons/tb";
 const App = () => {
   const [selectedTool, setSelectedTool] = useState("Welcome");
   const [image, setImage] = useState(null);
@@ -97,32 +103,34 @@ const App = () => {
   };
 
   return (
-    <div className="flex min-h-screen bg-gray-100">
+    <div className="flex min-h-screen ">
       {/* Toggle Button for Sidebar (top position on smaller screens) */}
       <button
         className="md:hidden fixed top-4 right-4 z-10 bg-blue-900 text-white p-2 rounded"
         onClick={toggleSidebar}
       >
-        {sidebarOpen ? "Close" : "Open"}
+        {sidebarOpen ? "hide tools" : "show tools"}
       </button>
 
       {/* Sidebar (top position on smaller screens) */}
       <aside
-        className={`bg-blue-800 text-white p-4 w-full md:w-1/4 lg:w-1/6 ${
+        className={`bg-gradient-to-t from-cyan-500 to-blue-500 border-r shadow-sm  text-stone-100 p-4 w-full md:w-1/4 lg:w-1/6 ${
           sidebarOpen ? "block" : "hidden"
         } md:block fixed top-0 left-0 h-full md:h-auto md:relative overflow-y-auto`}
       >
-        <div className="flex justify-between items-center mb-4 md:mb-6">
-          <h2 className="text-2xl font-bold">Tools</h2>
+        <div className="flex  justify-between items-center mb-4 md:mb-6">
+          <h2 className="text-2xl font-bold flex items-center gap-1">
+            <TbTools /> Tools
+          </h2>
           <button className="md:hidden text-white" onClick={toggleSidebar}>
             {sidebarOpen ? "Close" : "Open"}
           </button>
         </div>
-        <ul>
+        <ul className="">
           <li className="mb-2">
             <button
               onClick={() => setSelectedTool("Text Extraction")}
-              className="block w-full text-left p-2 rounded hover:bg-blue-700"
+              className="block w-full text-left p-2 rounded hover:bg-white/40 transition-all duration-300 "
             >
               Text Extraction
               <p className="text-xs text-stone-200">extract text from images</p>
@@ -132,7 +140,7 @@ const App = () => {
           <li className="mb-2">
             <button
               onClick={() => setSelectedTool("Image Compression")}
-              className="block w-full text-left p-2 rounded hover:bg-blue-700"
+              className="block w-full text-left p-2 rounded hover:bg-white/40 transition-all duration-300"
             >
               Image Compression
               <p className="text-xs text-stone-200">compress images fast</p>
@@ -141,7 +149,7 @@ const App = () => {
           <li className="mb-2">
             <button
               onClick={() => setSelectedTool("Image Upscaling")}
-              className="block w-full text-left p-2 rounded hover:bg-blue-700"
+              className="block w-full text-left p-2 rounded hover:bg-white/40 transition-all duration-300"
             >
               Image Upscaling
               <p className="text-xs text-stone-200">upscale images</p>
@@ -150,7 +158,7 @@ const App = () => {
           <li className="mb-2">
             <button
               onClick={() => setSelectedTool("PDF compress")}
-              className="block w-full text-left p-2 rounded hover:bg-blue-700"
+              className="block w-full text-left p-2 rounded hover:bg-white/40 transition-all duration-300"
             >
               PDF compress
               <p className="text-xs text-stone-200">
@@ -162,7 +170,7 @@ const App = () => {
           <li className="mb-2">
             <button
               onClick={() => setSelectedTool("Image Converter")}
-              className="block w-full text-left p-2 rounded hover:bg-blue-700"
+              className="block w-full text-left p-2 rounded hover:bg-white/40 transition-all duration-300"
             >
               Image Converter
               <p className="text-xs text-stone-200">covert images</p>
@@ -171,7 +179,7 @@ const App = () => {
           <li className="mb-2">
             <button
               onClick={() => setSelectedTool("Image Operations")}
-              className="block w-full text-left p-2 rounded hover:bg-blue-700"
+              className="block w-full text-left p-2 rounded hover:bg-white/40 transition-all duration-300"
             >
               Image Operations
               <p className="text-xs text-stone-200">bw, crop, etc</p>
@@ -180,7 +188,7 @@ const App = () => {
           <li className="mb-2">
             <button
               onClick={() => setSelectedTool("File Converter")}
-              className="block w-full text-left p-2 rounded hover:bg-blue-700 "
+              className="block w-full text-left p-2 rounded hover:bg-white/40 transition-all duration-300 "
             >
               File Converter
               <p className="text-xs text-stone-200">
@@ -188,12 +196,38 @@ const App = () => {
               </p>
             </button>
           </li>
+
+          <li className="mb-2">
+            <div className="block w-full text-left p-2 rounded hover:shadow-md transition-all duration-300  text-center text-stone-50 font-semibold bg-gradient-to-r from-indigo-500 to-pink-500">
+              <a
+                href="https://youtubeshortsmusic.netlify.app/"
+                className=""
+                target="_blank"
+              >
+                Youtube to mp3, shorts download <FaExternalLinkAlt />
+              </a>
+            </div>
+          </li>
+          <li className="mb-2">
+            <div className="block w-full text-left p-2 rounded transition-all duration-300  text-center text-stone-50 font-semibold flex justify-center gap-4 ">
+              <a
+                href="https://www.linkedin.com/in/yogesh-vishwakarma-bb132721a/"
+                className=""
+                target="_blank"
+              >
+                <FaLinkedin size={30} />
+              </a>
+              <a href="https://x.com/TupleMutable" className="" target="_blank">
+                <FaSquareXTwitter size={30} />
+              </a>
+            </div>
+          </li>
         </ul>
-        <div
+        {/* <div
           className="bg-gradient-to-tr from-blue-500
          to-blue-600 rounded-lg p-2"
         >
-          <h1 className="text-center text-md">
+          <h1 className="text-center text-md text-stone-50">
             Want to convert youtube to mp3? or download Youtube Shorts?
           </h1>
           <a
@@ -205,80 +239,49 @@ const App = () => {
               check our ad free downloader
             </div>
           </a>
-        </div>
+        </div> */}
       </aside>
 
       {/* Main Content */}
       <main className="w-full md:ml-auto p-6 md:w-3/4 md:p-10 lg:w-5/6 h-dvh overflow-scroll ">
         {selectedTool === "Welcome" && (
           <div>
-            <h1 className="text-3xl font-bold mb-4">
-              No Ads, No Redirects, Quick Conversion & Downloads.
+            <h1 className="text-3xl font-bold mb-4 text-center md:text-start">
+              QuenchTools &rarr; No Ads, No Redirects, Quick Conversion &
+              Downloads.
             </h1>
             <p>Select a tool from the sidebar to get started.</p>
             <br />
-            <ul>
-              <li className="capitalize font-semibold underline underline-offset-4">
-                tools we currently have
-              </li>
-              <br />
-              <li>
-                <h1 className="font-bold">Text Extractor</h1>
-                <li className="">
-                  &mdash; Extract text from images eg: png, jpg etc{" "}
-                </li>
-              </li>
-              <br />
-              <li>
-                <h1 className="font-bold">Image Compression</h1>
-                <li className="">&mdash; compress images eg: png, jpg etc </li>
-              </li>
-              <br />
-              <li>
-                <h1 className="font-bold">Image Upscale</h1>
-                <li className="">&mdash; upscale images eg: png, jpg etc </li>
-              </li>
-              <br />
-              <li>
-                <h1 className="font-bold">
-                  Compress PDFs (currently under work)
-                </h1>
-                <li className="">&mdash; compress pdf from large to small </li>
-              </li>
-              <br />
-              <li>
-                <h1 className="font-bold"> Image converter</h1>
-                <li className="">&mdash; jpg to png </li>
-                <li>&mdash; png to jpg </li>
-                <li>&mdash; png to ico </li>
-                <li>&mdash; bmp to png </li>
-                <li>&mdash; gif to jpg </li>
-                <li>&mdash; tiff to png </li>
-                <li>&mdash; webp to jpg </li>
-                <li>&mdash; more coming soon</li>
-              </li>
-              <br />
-              <li>
-                <h1 className="font-bold"> Image Operations</h1>
-                <li>&mdash; color to black & white </li>
-                <li>&mdash; crop images </li>
-                <li>&mdash; sharpen images </li>
-                <li>&mdash; more coming soon</li>
-              </li>
-              <br />
-              <li>
-                <h1 className="font-bold">File Converter</h1>
-                <li>&mdash; pdf to xls (excel) </li>
-                <li>&mdash; word to pdf </li>
-                <li>&mdash; text to pdf </li>
-                <li>&mdash; excel (xls) to csv </li>
-                <li>&mdash; csv to excel(xls) </li>
-                <li>&mdash; jpg to pdf </li>
-                <li>&mdash; pdf to jpg </li>
-                <li>&mdash; png to pdf </li>
-                <li>&mdash; more coming soon</li>
-              </li>
-            </ul>
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
+              <FeaturesCard
+                message={"Extract text from any image."}
+                title={"Text Extractor"}
+              />
+              <FeaturesCard
+                message={"Compress any image."}
+                title={"Image Compression"}
+              />
+              <FeaturesCard
+                message={"Upscale any image to a higher resolution."}
+                title={"Image Upscale"}
+              />{" "}
+              <FeaturesCard
+                message={"Compress PDFs to make them smaller"}
+                title={"PDF compression"}
+              />
+              <FeaturesCard
+                message={"Convert images from one to other format"}
+                title={"Image Converter"}
+              />
+              <FeaturesCard
+                message={"make images black & white, crop them etc"}
+                title={"Image Operations"}
+              />
+              <FeaturesCard
+                message={"Convert files from one to another format"}
+                title={"Files Conversion"}
+              />
+            </div>
           </div>
         )}
 
